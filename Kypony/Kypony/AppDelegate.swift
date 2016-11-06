@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        if (UserDefaults.standard.value(forKey: "NotTheFirstTime") as? Bool) == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "FirstViewController")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            //UserDefaults.standard.set(true, forKey: "NotTheFirstTime")
+        }
         // Override point for customization after application launch.
         return true
     }
